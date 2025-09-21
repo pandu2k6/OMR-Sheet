@@ -1,0 +1,1314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Automated OMR Grader</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #34495e;
+    line-height: 1.6;
+    background: linear-gradient(135deg, #f0f4f8, #eef1f3);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 3rem;
+    background-color: transparent;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.logo {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #3498db;
+    letter-spacing: -1px;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #3498db;
+}
+
+.login-btn {
+    background-color: #3498db;
+    color: #fff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.2);
+}
+
+.login-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 152, 219, 0.3);
+}
+
+
+.hero-section, .info-section, .how-it-works-section {
+    padding: 6rem 2rem;
+    text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.hero-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 85vh;
+    flex-direction: column;
+    padding: 2rem;
+}
+
+.hero-content h1 {
+    font-size: 4.5rem;
+    font-weight: 800;
+    margin: 0;
+    color: #2c3e50;
+    letter-spacing: -2px;
+}
+
+.hero-content p {
+    font-size: 1.5rem;
+    color: #555;
+    margin-top: 0;
+}
+
+.cta-btn {
+    background: linear-gradient(45deg, #3498db, #2980b9);
+    color: #fff;
+    padding: 1rem 3rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+.cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(52, 152, 219, 0.4);
+}
+
+.features-section {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+    margin-top: 3rem;
+}
+
+.feature-card {
+    text-align: center;
+    max-width: 280px;
+    padding: 3rem 1.5rem;
+    border-radius: 15px;
+    background-color: #fff;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
+}
+
+.feature-card i {
+    font-size: 2.5rem;
+    color: #3498db;
+    margin-bottom: 1rem;
+}
+
+.feature-card h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    color: #2c3e50;
+}
+
+.feature-card p {
+    font-size: 0.95rem;
+    color: #777;
+    margin-top: 0.5rem;
+}
+
+.how-it-works-section {
+    padding: 6rem 2rem;
+}
+
+.section-heading {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.section-heading h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.section-heading p {
+    font-size: 1.1rem;
+    color: #777;
+}
+
+.steps-container {
+    display: flex;
+    justify-content: space-around; 
+    align-items: flex-start;
+    flex-wrap: nowrap; 
+    margin-top: 3rem;
+}
+
+.step {
+    flex: 1; 
+    min-width: 200px;
+    text-align: center;
+}
+
+.step-number {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #fff;
+    background-color: #3498db;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+}
+
+.step-content h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin: 0.5rem 0;
+}
+
+.step-content p {
+    font-size: 0.95rem;
+    color: #777;
+}
+
+.transform-section {
+    text-align: center;
+    background: #2c3e50;
+    color: #fff;
+    padding: 4rem 2rem;
+    border-radius: 15px;
+    margin: 5rem auto;
+}
+
+.transform-section h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.transform-section p {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
+}
+
+.transform-section .cta-btn {
+    background: #3498db;
+    box-shadow: none;
+    border: none;
+}
+
+.transform-section .cta-btn:hover {
+    background: #2980b9;
+}
+
+
+.page-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    position: relative;
+    z-index: 1;
+}
+
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 450px;
+    width: 100%;
+    position: relative;
+}
+
+.form-card {
+    background-color: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    padding: 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.form-card h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: #34495e;
+}
+
+.subtitle {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 2rem;
+}
+
+.form-layout {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-group {
+    text-align: left;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    color: #555;
+}
+
+.input-with-icon {
+    position: relative;
+    display: block;
+}
+
+.input-with-icon input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    box-sizing: border-box;
+}
+
+.input-with-icon input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 1rem;
+    pointer-events: none;
+}
+
+.forgot-password {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s;
+    margin-top: 0.5rem;
+    display: block;
+}
+
+.forgot-password:hover {
+    color: #2980b9;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1rem;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    margin-top: 1.5rem;
+}
+
+.submit-btn:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3);
+}
+
+.divider {
+    position: relative;
+    margin: 2rem 0;
+}
+
+.divider::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: #eee;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+}
+
+.or-text {
+    background-color: #fff;
+    padding: 0 1rem;
+    position: relative;
+    z-index: 1;
+    font-size: 0.9rem;
+    color: #999;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.social-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border-radius: 50px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    background-color: #fff;
+    transition: box-shadow 0.3s, border-color 0.3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    color: #555;
+}
+
+.social-btn:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    border-color: #3498db;
+}
+
+.social-btn .fab {
+    font-size: 1.2rem;
+}
+
+.social-btn.google-btn .fab {
+    color: #4285f4;
+}
+
+.social-btn.microsoft-btn .fab {
+    color: #f25022;
+}
+
+.signup-link {
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #666;
+}
+
+.signup-link a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+.signup-link a:hover {
+    color: #2980b9;
+}
+
+.password-requirements {
+    text-align: left;
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.password-requirements p {
+    margin-top: 0;
+    margin-bottom: 0.8rem;
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.password-requirements ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.password-requirements li {
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+}
+
+.password-requirements li .fa-check {
+    color: #28a745;
+    margin-right: 0.5rem;
+}
+
+.form-group-checkbox {
+    display: flex;
+    align-items: center;
+    margin-top: 1.5rem;
+    text-align: left;
+}
+
+.form-group-checkbox input[type="checkbox"] {
+    margin-right: 0.75rem;
+    transform: scale(1.2);
+}
+
+.form-group-checkbox label {
+    font-size: 0.9rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+}
+
+.form-group-checkbox a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.form-group-checkbox a:hover {
+    text-decoration: underline;
+}
+
+.close-btn {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: #888;
+    transition: color 0.3s ease, transform 0.3s ease;
+    z-index: 20;
+    line-height: 1;
+}
+
+.close-btn:hover {
+    color: #e74c3c;
+    transform: rotate(90deg);
+}
+
+.footer {
+    background-color: #2c3e50;
+    color: #fff;
+    padding: 3rem 2rem 1rem;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    text-align: left;
+}
+
+.footer-col {
+    flex: 1 1 200px;
+    margin-bottom: 2rem;
+}
+
+.footer-col.brand-info {
+    flex: 2 1 300px;
+}
+
+.footer-col h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #fff;
+}
+
+.footer-col ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.footer-col ul li {
+    margin-bottom: 0.75rem;
+}
+
+.footer-col ul li a {
+    text-decoration: none;
+    color: #bdc3c7;
+    transition: color 0.3s ease;
+}
+
+.footer-col ul li a:hover {
+    color: #3498db;
+}
+
+.footer-bottom {
+    text-align: center;
+    border-top: 1px solid #444;
+    padding-top: 1rem;
+    margin-top: 2rem;
+}
+
+.footer-bottom p {
+    font-size: 0.8rem;
+    color: #888;
+}
+.grader-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    text-align: center;
+    width: 100%;
+    max-width: 600px;
+}
+
+.grader-card .header h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.grader-card .header p {
+    font-size: 16px;
+    color: #666;
+    margin-bottom: 30px;
+}
+
+.grader-card .form-section {
+    text-align: left;
+    margin-bottom: 25px;
+}
+
+.grader-card .form-section label {
+    display: block;
+    font-size: 16px;
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 8px;
+}
+
+.grader-card .file-input-wrapper,
+.grader-card .form-section input[type="text"] {
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.grader-card .file-input-wrapper {
+    position: relative;
+    padding: 15px;
+    cursor: pointer;
+}
+
+.grader-card .file-input-wrapper:hover {
+    border-color: #3498db;
+    background-color: #eaf3ff;
+}
+
+.grader-card .file-input-wrapper input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.grader-card .file-input-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 16px;
+    color: #3498db;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.grader-card .file-input-label i {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.grader-card .form-section input[type="text"] {
+    border-style: solid;
+    padding: 12px 15px;
+    font-size: 16px;
+    color: #333;
+    border-color: #ddd;
+}
+
+.grader-card .form-section input[type="text"]:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.25);
+}
+
+.grader-card .form-section small {
+    display: block;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #777;
+}
+
+.grader-card .evaluate-button {
+    width: 100%;
+    padding: 15px;
+    background-color: #2ecc71;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.grader-card .evaluate-button:hover {
+    background-color: #27ae60;
+}
+
+.grader-card .evaluate-button:active {
+    background-color: #24a159;
+}
+
+.results-container {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.results-container h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.filter-card, .results-card {
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    margin-bottom: 2rem;
+}
+
+.filter-heading {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #444;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+
+.filter-options {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 1.5rem;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    min-width: 150px;
+    flex: 1;
+}
+
+.filter-group label {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 0.5rem;
+}
+
+.filter-group select, .filter-group input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.date-input-wrapper {
+    position: relative;
+    width: 70%;
+}
+
+.date-input-wrapper input {
+    padding-right: 3rem;
+}
+
+.date-input-wrapper i {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.filter-button {
+    padding: 0.75rem 2rem;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.filter-button:hover {
+    background-color: #2980b9;
+}
+
+/* Results Table */
+.results-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.results-header h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+.search-sort {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input {
+    padding: 0.6rem 1rem 0.6rem 2.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.search-box i {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+}
+
+.entries-per-page {
+    padding: 0.6rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fff;
+    cursor: pointer;
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+thead th {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #888;
+    padding: 1rem 1.2rem;
+    border-bottom: 2px solid #eee;
+    white-space: nowrap;
+}
+
+tbody tr {
+    border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+tbody td {
+    padding: 1.2rem;
+    font-size: 0.95rem;
+    color: #555;
+    vertical-align: middle;
+}
+
+.student-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap;
+}
+
+.student-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.student-details p {
+    margin: 0;
+    font-weight: 600;
+}
+
+.student-details small {
+    display: block;
+    color: #999;
+    font-size: 0.8rem;
+}
+
+tbody td small {
+    display: block;
+    color: #999;
+    font-size: 0.8rem;
+    font-weight: 400;
+}
+
+.results-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.results-footer small {
+    color: #777;
+}
+
+.pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #777;
+    padding: 0.5rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+    border-color: #ccc;
+}
+
+.pagination a.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+}
+
+.dash-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+}
+
+.dash-sidebar {
+    width: 70px;
+    background-color: var(--sidebar-bg);
+    padding-top: 20px;
+    position: fixed;
+    height: 100vh;
+}
+
+.dash-sidebar-icon {
+    color: var(--secondary-text);
+    text-align: center;
+    padding: 15px 0;
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.dash-sidebar-icon.active {
+    color: var(--primary-btn-text);
+}
+
+.dash-sidebar-icon:hover {
+    color: #fff;
+}
+
+.dash-main-content {
+    flex-grow: 1;
+    padding: 0 30px;
+    margin-left: 70px;
+    width: calc(100% - 70px);
+}
+
+.dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+.dash-user-menu {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.dash-user-menu .fa-bell {
+    font-size: 20px;
+}
+
+.dash-user-avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+}
+
+.dash-user-menu span {
+    font-weight: 500;
+}
+
+.dash-user-menu .fa-chevron-down {
+    font-size: 12px;
+}
+
+.dash-board {
+    padding-top: 20px;
+}
+
+.dash-board h1 {
+    font-size: 28px;
+    margin-bottom: 5px;
+}
+
+.dash-welcome-text {
+    color: var(--secondary-text);
+    margin-top: 0;
+    margin-bottom: 30px;
+}
+
+.dash-card {
+    background-color: var(--card-bg);
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.dash-profile-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.dash-profile-info {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.dash-profile-avatar-large {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+.dash-profile-details h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.dash-profile-details p, .dash-profile-details span {
+    margin: 0;
+    color: var(--secondary-text);
+    font-size: 14px;
+}
+
+.dash-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.dash-stat-card {
+    text-align: left;
+}
+
+.dash-stat-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 20px;
+    margin-bottom: 16px;
+}
+
+.dash-stat-icon.students { background-color: #0d6efd; }
+.dash-stat-icon.omr { background-color: #ffc107; }
+.dash-stat-icon.score { background-color: #198754; }
+
+.dash-stat-title {
+    color: var(--secondary-text);
+    margin: 0 0 8px 0;
+    font-size: 15px;
+}
+
+.dash-stat-value {
+    font-size: 36px;
+    font-weight: 600;
+    margin: 0;
+}
+
+.dash-stat-trend {
+    margin: 8px 0 0 0;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dash-trend-up {
+    color: var(--trend-up);
+}
+
+.dash-trend-down {
+    color: var(--trend-down);
+}
+
+.dash-btn-primary {
+    background-color: var(--primary-btn-bg);
+    color: var(--primary-btn-text);
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.dash-btn-primary:hover {
+    background-color: #495057;
+}
+
+.dash-help-button {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: var(--help-btn-bg);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s ease;
+}
+
+.dash-help-button:hover {
+    transform: translateY(-3px);
+}
+
+@media (max-width: 992px) {
+    .dash-stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .dash-main-content {
+        padding: 0 15px;
+    }
+    .dash-profile-card {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+    .dash-btn-primary {
+        width: 100%;
+    }
+}
+    </style>
+    <script>
+        // JavaScript for the Login Page
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    // Prevents the default form submission.
+    event.preventDefault();
+
+    // In a real application, you'd add authentication logic here,
+    // like sending the email and password to a server.
+    // For this example, we will just simulate a successful login.
+
+    // Redirect the user to the upload page.
+    window.location.href = "upload.html";
+});
+
+// JavaScript for the OMR Grader Page
+document.addEventListener('DOMContentLoaded', function() {
+    const excelInput = document.getElementById('file-upload-1');
+    const folderInput = document.getElementById('file-upload-2');
+    const excelLabel = document.querySelector('label[for="file-upload-1"] span');
+    const folderLabel = document.querySelector('label[for="file-upload-2"] span');
+
+    // Updates the label text for the Excel file input
+    if (excelInput && excelLabel) {
+        excelInput.addEventListener('change', function() {
+            if (this.files && this.files.length > 0) {
+                excelLabel.textContent = this.files[0].name;
+            } else {
+                excelLabel.textContent = "Choose Excel file";
+            }
+        });
+    }
+
+    // Updates the label text for the OMR folder input
+    if (folderInput && folderLabel) {
+        folderInput.addEventListener('change', function() {
+            // Note: webkitdirectory may not have webkitRelativePath for all browsers
+            if (this.files && this.files.length > 0) {
+                const fullPath = this.files[0].webkitRelativePath;
+                folderLabel.textContent = fullPath.substring(0, fullPath.indexOf('/'));
+            } else {
+                folderLabel.textContent = "Select OMR folder";
+            }
+        });
+    }
+});
+    </script>
+</head>
+<body class="blurred-background">
+    <header class="navbar">
+        <div class="logo">OMR Analyzer</div>
+        <nav class="nav-links">
+            <a href="#" class="nav-link">Dashboard</a>
+            <a href="#" class="nav-link">History</a>
+            <a href="#" class="nav-link">Account</a>
+            <a href="login.html" class="nav-link logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="grader-card">
+            <div class="header">
+                <h2>Automated OMR Grader</h2>
+                <p>Upload your files to get instant scores</p>
+            </div>
+
+            <div class="form-section">
+                <label for="file-upload-1">Step-1: Upload Answer Key file</label>
+                <div class="file-input-wrapper">
+                    <input type="file" id="file-upload-1" accept=".xls, .xlsx">
+                    <label for="file-upload-1" class="file-input-label">
+                        <i class="fas fa-file-excel"></i>
+                        <span>Choose Excel file</span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="form-section">
+                <label for="sheet-name">Step-2: Enter Answer Key Sheet Name</label>
+                <input type="text" id="sheet-name" placeholder="Enter sheet name">
+            </div>
+
+            <div class="form-section">
+                <label for="file-upload-2">Step-3: Choose OMR folder</label>
+                <div class="file-input-wrapper folder-input-wrapper">
+                    <input type="file" id="file-upload-2" webkitdirectory directory>
+                    <label for="file-upload-2" class="file-input-label">
+                        <i class="fas fa-folder-open"></i>
+                        <span>Select OMR folder</span>
+                    </label>
+                </div>
+            </div>
+            
+            <button class="evaluate-button" id="evaluateBtn">Evaluate Sheets</button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+<script>
+    document.getElementById('evaluateBtn').addEventListener('click', function() {
+        // Here, you would typically process the files first.
+        // For this example, we'll just redirect to the results page.
+        window.location.href = "results.html";
+    });
+</script>
+</body>
+</html>

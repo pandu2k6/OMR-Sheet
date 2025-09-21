@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - OMR Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body class="blurred-background">
+
+    <header class="navbar">
+        <div class="logo">OMR Analyzer</div>
+        <nav class="nav-links">
+            <a href="login.html" class="nav-link">Sign Up</a>
+            <a href="login.html" class="nav-link login-btn">Login</a>
+        </nav>
+    </header>
+
+    <main class="page-container">
+        <div class="card-wrapper">
+            <a href="login.html" class="back-to-login">
+                <i class="fas fa-arrow-left"></i> Back to Login
+            </a>
+            <div class="form-card">
+                <div class="card-icon">
+                    <i class="fas fa-chart-line"></i> 
+                </div>
+                <h2>Create Account</h2>
+                <p class="subtitle">Join OMR Analyzer and make evaluation easy</p>
+                <form action="#" method="POST" class="form-layout">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-with-icon">
+                            <input type="email" id="email" name="email" placeholder="Enter your email">
+                            <i class="fas fa-envelope input-icon"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="input-with-icon">
+                            <input type="password" id="password" name="password" placeholder="Create a password">
+                            <i class="fas fa-lock input-icon"></i>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="re-password">Re-enter Password</label>
+                        <div class="input-with-icon">
+                            <input type="password" id="re-password" name="re-password" placeholder="Re-enter your password">
+                            <i class="fas fa-lock input-icon"></i>
+                        </div>
+                    </div>
+
+                    <div class="password-requirements">
+                        <p>Password must contain:</p>
+                        <ul>
+                            <li><i class="fas fa-check"></i> At least 8 characters</li>
+                            <li><i class="fas fa-check"></i> One uppercase letter</li>
+                            <li><i class="fas fa-check"></i> One number</li>
+                        </ul>
+                    </div>
+
+                    <div class="form-group-checkbox">
+                        <input type="checkbox" id="terms" name="terms">
+                        <label for="terms">I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></label>
+                    </div>
+
+                    <button type="submit" class="submit-btn">Create Account</button>
+                </form>
+                <div class="divider">
+                    <span class="or-text">or</span>
+                </div>
+                <div class="social-login">
+                    <button class="social-btn google-btn">
+                        <i class="fab fa-google"></i> Continue with Google
+                    </button>
+                    <button class="social-btn microsoft-btn">
+                        <i class="fab fa-microsoft"></i> Continue with Microsoft
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-col brand-info">
+                <div class="logo">OMR Analyzer</div>
+                <p>Making evaluation easy with advanced OMR analysis technology for educators and institutions worldwide.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Product</h4>
+                <ul>
+                    <li><a href="#">Features</a></li>
+                    <li><a href="#">Pricing</a></li>
+                    <li><a href="#">API</a></li>
+                    <li><a href="#">Documentation</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Support</h4>
+                <ul>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 OMR Analyzer. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

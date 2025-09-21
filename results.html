@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Results - OMR Analyzer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">OMR Analyzer</div>
+        <nav class="nav-links">
+            <a href="dashboard.html" class="nav-link">Dashboard</a>
+            <a href="#" class="nav-link">History</a>
+            <a href="#" class="nav-link">Account</a>
+            <a href="login.html" class="nav-link logout-btn">Logout</a>
+        </nav>
+    </header>
+
+    <main class="results-container">
+        <h1>Results</h1>
+        <div class="filter-card">
+            <h3 class="filter-heading">Filter Results</h3>
+            <div class="filter-options">
+                <div class="filter-group">
+                    <label for="class-grade">Class/Grade</label>
+                    <select id="class-grade">
+                        <option>All Classes</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject">
+                        <option>All Subjects</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label for="score-range">Score Range</label>
+                    <select id="score-range">
+                        <option>All Scores</option>
+                    </select>
+                </div>
+                <div class="filter-group date-filter">
+                    <label for="date-range">Date Range</label>
+                    <div class="date-input-wrapper">
+                        <input type="text" id="date-range" placeholder="01-01-2025">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                </div>
+                <button class="filter-button">Apply Filters</button>
+            </div>
+        </div>
+
+        <div class="results-card">
+            <div class="results-header">
+                <h2>Student Results</h2>
+                <div class="search-sort">
+                    <div class="search-box">
+                        <input type="text" placeholder="Search students...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <select class="entries-per-page">
+                        <option>25 per page</option>
+                        <option>50 per page</option>
+                        <option>100 per page</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox"></th>
+                            <th>STUDENT INFO</th>
+                            <th>ROLL NO</th>
+                            <th>MATHEMATICS</th>
+                            <th>PHYSICS</th>
+                            <th>CHEMISTRY</th>
+                            <th>BIOLOGY</th>
+                            <th>ENGLISH</th>
+                            <th>TOTAL</th>
+                            <th>PERCENTAGE</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-details">
+                                        <p>Sarah Johnson</p>
+                                        <small>Class 12-A</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2025001</td>
+                            <td>95<small>/100</small><br>88%</td>
+                            <td>88<small>/100</small><br>93%</td>
+                            <td>92<small>/100</small><br>89%</td>
+                            <td>89<small>/100</small><br>89%</td>
+                            <td>94<small>/100</small><br>94%</td>
+                            <td>458<small>/500</small></td>
+                            <td>91.6%</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-details">
+                                        <p>Michael Chen</p>
+                                        <small>Class 12-B</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2025002</td>
+                            <td>87<small>/100</small><br>87%</td>
+                            <td>93<small>/100</small><br>93%</td>
+                            <td>85<small>/100</small><br>85%</td>
+                            <td>91<small>/100</small><br>91%</td>
+                            <td>82<small>/100</small><br>82%</td>
+                            <td>438<small>/500</small></td>
+                            <td>87.6%</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-details">
+                                        <p>Emma Rodriguez</p>
+                                        <small>Class 12-A</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2025003</td>
+                            <td>78<small>/100</small><br>78%</td>
+                            <td>82<small>/100</small><br>82%</td>
+                            <td>79<small>/100</small><br>79%</td>
+                            <td>86<small>/100</small><br>86%</td>
+                            <td>88<small>/100</small><br>88%</td>
+                            <td>413<small>/500</small></td>
+                            <td>82.6%</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-details">
+                                        <p>David Kim</p>
+                                        <small>Class 12-C</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2025004</td>
+                            <td>91<small>/100</small><br>91%</td>
+                            <td>89<small>/100</small><br>89%</td>
+                            <td>94<small>/100</small><br>94%</td>
+                            <td>87<small>/100</small><br>87%</td>
+                            <td>85<small>/100</small><br>85%</td>
+                            <td>446<small>/500</small></td>
+                            <td>89.2%</td>
+                        </tr>
+                        <tr>
+                            <td><input type="checkbox"></td>
+                            <td>
+                                <div class="student-info">
+                                    <div class="student-details">
+                                        <p>Olivia Thompson</p>
+                                        <small>Class 12-B</small>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>2025005</td>
+                            <td>73<small>/100</small><br>73%</td>
+                            <td>76<small>/100</small><br>76%</td>
+                            <td>71<small>/100</small><br>71%</td>
+                            <td>78<small>/100</small><br>78%</td>
+                            <td>81<small>/100</small><br>81%</td>
+                            <td>379<small>/500</small></td>
+                            <td>75.8%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="results-footer">
+                <small>Showing 1 to 5 of 1747 results</small>
+                <div class="pagination">
+                    <a href="#" class="arrow-btn disabled"><i class="fas fa-chevron-left"></i></a>
+                    <a href="#" class="arrow-btn"><i class="fas fa-chevron-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</body>
+</html>

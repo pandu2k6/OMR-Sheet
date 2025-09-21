@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMR Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div class="dash-container">
+        <nav class="dash-sidebar">
+            <div class="dash-sidebar-icon active">
+                <i class="fa-solid fa-layer-group"></i>
+            </div>
+            </nav>
+
+        <main class="dash-main-content">
+            <header class="dash-header">
+                <div class="logo">
+                    OMR Analyzer
+                </div>
+                <div class="dash-user-menu">
+                    <i class="fa-regular fa-bell"></i>
+                    <span>John Smith</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+            </header>
+
+            <section class="dash-board">
+                <h1>Dashboard</h1>
+                <p class="dash-welcome-text">Welcome back! Here's your OMR analysis overview.</p>
+
+                <div class="dash-card dash-profile-card">
+                    <div class="dash-profile-info">
+                        <div class="dash-profile-details">
+                            <h2>John Smith</h2>
+                            <p>Mathematics Teacher</p>
+                            <span>Joined: January 2025</span>
+                        </div>
+                    </div>
+                    <button class="dash-btn-primary">Edit Profile</button>
+                </div>
+
+                <div class="dash-stats-grid">
+                    <div class="dash-card dash-stat-card">
+                        <div class="dash-stat-icon students">
+                            <i class="fa-solid fa-users"></i>
+                        </div>
+                        <p class="dash-stat-title">Total Students Evaluated</p>
+                        <p class="dash-stat-value">1,747</p>
+                        <p class="dash-stat-trend dash-trend-up">
+                            <i class="fa-solid fa-arrow-up"></i> +12% from last month
+                        </p>
+                    </div>
+
+                    <div class="dash-card dash-stat-card">
+                        <div class="dash-stat-icon omr">
+                            <i class="fa-regular fa-file-lines"></i>
+                        </div>
+                        <p class="dash-stat-title">OMR Sheets Uploaded</p>
+                        <p class="dash-stat-value">89</p>
+                        <p class="dash-stat-trend dash-trend-up">
+                            <i class="fa-solid fa-arrow-up"></i> +5 this week
+                        </p>
+                    </div>
+
+                    <div class="dash-card dash-stat-card">
+                        <div class="dash-stat-icon score">
+                            <i class="fa-solid fa-chart-line"></i>
+                        </div>
+                        <p class="dash-stat-title">Average Score</p>
+                        <p class="dash-stat-value">78.5%</p>
+                        <p class="dash-stat-trend dash-trend-down">
+                            <i class="fa-solid fa-arrow-down"></i> -2.3% from last test
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <button class="dash-help-button">
+        <i class="fa-regular fa-circle-question"></i> Help
+    </button>
+</body>
+</html>
